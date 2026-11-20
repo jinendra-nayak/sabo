@@ -6,5 +6,5 @@ Original images kept for reference/re-export. The website only serves what is in
 |---|---|---|
 | `brand/` | `logo-source.png` (684×292 logo) | `public/official/brand/logo.png` |
 | `popups/` | the two RBI awareness posters | `public/official/popup/front.png`, `second.png` |
-| `hero/` | `security-slide-source.png` | `public/official/hero/security-bg.png` |
+| `hero/` | `security-slide-source.png` | `public/official/hero/security-bg-green.png (recoloured to the site palette)` |
 | `app-badges/` | original Google Play / App Store badge images | not used — the badges are now built in code (`src/components/home/app-showcase.tsx`) |

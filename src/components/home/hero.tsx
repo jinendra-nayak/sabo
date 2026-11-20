@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useState } from "react";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/content/dictionaries/en";
@@ -14,14 +14,14 @@ type SlideKey = "education" | "app" | "security" | "rates";
 const order: SlideKey[] = ["education", "app", "security", "rates"];
 
 /* ── decorative animated shapes (same visual language as the bank's current hero) ── */
-function Shapes() {
+function Shapes({ stars = false }: { stars?: boolean }) {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
       <svg className="animate-spin-slow absolute -right-24 top-1/2 size-[520px] -translate-y-1/2 text-[#1a3222] lg:right-[6%]" viewBox="0 0 100 100" fill="none">
         <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="9" strokeDasharray="1.2 0" />
       </svg>
-      <svg className="absolute left-[46%] top-[8%] size-9 text-white/20" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6z" /></svg>
-      <svg className="absolute bottom-[12%] left-[38%] size-6 text-white/20" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6z" /></svg>
+      {stars && <svg className="absolute left-[46%] top-[8%] size-9 text-white/20" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6z" /></svg>}
+      {stars && <svg className="absolute bottom-[12%] left-[38%] size-6 text-white/20" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6z" /></svg>}
       <span className="animate-float absolute bottom-[14%] left-[34%] size-12 rounded-full border-[7px] border-white/10" />
     </div>
   );
@@ -30,14 +30,14 @@ function Shapes() {
 /* Security slide: the shield-and-hand artwork is the slide background; the left side fades into the hero green so the text stays readable. */
 function SecurityBackdrop() {
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden bg-[#06142b]">
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden bg-[#14291a]">
       <div className="sec-zoom absolute inset-x-0 bottom-0 top-[42%] lg:inset-0">
-        <Image src="/official/hero/security-bg.png" alt="" fill priority sizes="100vw" className="object-cover [object-position:64%_30%] lg:[object-position:72%_28%]" />
+        <Image src="/official/hero/security-bg-green.png" alt="" fill priority sizes="100vw" className="object-cover [object-position:64%_30%] lg:[object-position:72%_28%]" />
       </div>
-      <div className="sec-glow absolute right-[8%] bottom-[8%] size-72 lg:right-[16%] lg:top-[16%] lg:bottom-auto lg:size-[26rem] rounded-full bg-cyan-400/25 blur-3xl" />
-      <div className="sec-scan absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-cyan-300/10 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#06142b] from-45% via-[#06142b]/60 to-transparent lg:bg-gradient-to-r lg:from-[#06142b] lg:from-0% lg:via-[#06142b]/60 lg:to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#06142b]/70 to-transparent" />
+      <div className="sec-glow absolute right-[8%] bottom-[8%] size-72 lg:right-[16%] lg:top-[16%] lg:bottom-auto lg:size-[26rem] rounded-full bg-gold/15 blur-3xl" />
+      <div className="sec-scan absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-gold/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#14291a] from-45% via-[#14291a]/60 to-transparent lg:bg-gradient-to-r lg:from-[#14291a] lg:from-0% lg:via-[#14291a]/60 lg:to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#14291a]/70 to-transparent" />
     </div>
   );
 }
@@ -67,30 +67,15 @@ function RatesArt() {
   );
 }
 
-/** How long each slide stays: the first (Education Loan) slide 4 s, the others 2 s. */
-const DURATIONS = [4000, 2000, 2000, 2000];
+/** Every slide stays exactly 3 s — an even, continuous rhythm that keeps running wherever the page is scrolled. */
+const SLIDE_MS = 3000;
 
 export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [inView, setInView] = useState(true);
-  const [cycle, setCycle] = useState(0); // bumps every time the hero is left, so the first slide restarts with its full 4 s
-  const root = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const n = order.length;
   const go = useCallback((d: number) => setI((v) => (v + d + n) % n), [n]);
-
-  // Always (re)start on the first slide: when the hero scrolls out of view it resets, and autoplay only runs while it is visible.
-  useEffect(() => {
-    const el = root.current;
-    if (!el) return;
-    const io = new IntersectionObserver(([e]) => {
-      setInView(e.isIntersecting);
-      if (!e.isIntersecting) { setI(0); setCycle((c) => c + 1); }
-    }, { threshold: 0.15 });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
 
   const key = order[i];
   const s = t.home.hero[key];
@@ -106,7 +91,6 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
 
   return (
     <section
-      ref={root}
       aria-roledescription="carousel"
       aria-label="Highlights"
       className="mt-3 sm:mt-4"
@@ -116,7 +100,7 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
       onBlur={() => setPaused(false)}
     >
       <div className="relative overflow-hidden bg-[#223e2a] shadow-xl">
-        {key === "security" ? <SecurityBackdrop key="sec-bg" /> : <Shapes />}
+        {key === "security" ? <SecurityBackdrop key="sec-bg" /> : <Shapes stars={key === "education"} />}
         <div key={key} role="group" aria-roledescription="slide" aria-label={`${i + 1} / ${n}`} className="relative mx-auto grid w-full max-w-7xl min-h-[560px] items-center gap-4 px-6 py-12 sm:px-12 lg:min-h-[480px] lg:grid-cols-[1.1fr_0.9fr] lg:px-20 max-sm:pr-16">
           <div className="max-w-2xl">
             <p className="hero-in text-sm font-bold uppercase tracking-wide text-gold sm:text-base" style={{ animationDelay: "0.05s" }}>{s.eyebrow}</p>
@@ -160,9 +144,9 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
                 >
                   <span className="relative block h-[3px] w-full overflow-hidden rounded-full bg-white/25 transition-colors duration-300 group-hover/seg:bg-white/45">
                     <span
-                      key={active ? `a${i}-${cycle}` : `s${idx}`}
+                      key={active ? `a${i}` : `s${idx}`}
                       className={`absolute inset-0 origin-left rounded-full ${active ? "hero-seg bg-gold" : idx < i ? "bg-white/70" : "scale-x-0"}`}
-                      style={active && !reduced ? { animationDuration: `${DURATIONS[i]}ms`, animationPlayState: paused || !inView ? "paused" : "running" } : undefined}
+                      style={active && !reduced ? { animationDuration: `${SLIDE_MS}ms`, animationPlayState: paused ? "paused" : "running" } : undefined}
                       onAnimationEnd={active ? () => go(1) : undefined}
                     />
                   </span>
