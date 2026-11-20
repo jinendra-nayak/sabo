@@ -1,0 +1,75 @@
+{
+ "address": "Station Road, Himatnagar, Gujarat-383001",
+ "hours": "10:00 AM - 05:00 PM, 2nd and 4th Saturday Holiday",
+ "phones": [
+  "02772-245124",
+  "240464"
+ ],
+ "email": "sabarbank@skdccb.bank.in",
+ "nodalOfficer": {
+  "name": "A G Diwan",
+  "mobile": "9879947477",
+  "email": "atm@skdccb.bank.in",
+  "address": "Station Road, Himatnagar, 383001"
+ },
+ "banking": {
+  "registrationNo": "24935",
+  "rbiLicenceNo": "RPCD(AH) 20/2011-12",
+  "ifsc": "GSCB0SKB001",
+  "pan": "AAAAT1019P",
+  "gst": "24AAAAT1019P1ZH"
+ },
+ "counters": [
+  {
+   "key": "shareCapital",
+   "value": 5238.24,
+   "unit": "Lakh",
+   "icon": "share"
+  },
+  {
+   "key": "netProfit",
+   "value": 3303.0,
+   "unit": "Lakh",
+   "icon": "net"
+  },
+  {
+   "key": "deposits",
+   "value": 437301.49,
+   "unit": "Lakh",
+   "icon": "deposits"
+  },
+  {
+   "key": "advances",
+   "value": 253053.42,
+   "unit": "Lakh",
+   "icon": "advances"
+  }
+ ],
+ "counterYear": "2025-26",
+ "external": {
+  "nivaran": "https://sanb7788.nivaran.in/",
+  "positivePay": "https://gujratnbd.cedgepps.in/SABARKANTHA/#/auth/login",
+  "netBanking": "https://inb.skdccb.bank.in/OnlineSKBANK/",
+  "webMail": "https://outlook.office.com/",
+  "lodgeComplaint": "https://cms.skdccb.bank.in/",
+  "playStore": "https://play.google.com/store/apps/details?id=com.cedge.skbankconnectsync&hl=en-US",
+  "appStore": "https://apps.apple.com/in/app/skbank-mobile-banking/id1574478831",
+  "rbi": "https://www.rbi.org.in/",
+  "cybercrime": "https://cybercrime.gov.in/",
+  "incomeTax": "https://www.incometax.gov.in/iec/foportal/",
+  "rbiKehtaHai": "https://www.rbi.org.in/commonman/English/scripts/rbikehtahai.aspx",
+  "dicgc": "https://www.dicgc.org.in/",
+  "facebook": "https://www.facebook.com/share/17X3hUbLbQ/"
+ },
+ "heroSlides": [
+  "/official/hero/1.webp",
+  "/official/hero/2.webp",
+  "/official/hero/3.webp",
+  "/official/hero/4.webp",
+  "/official/hero/5.webp",
+  "/official/hero/6.webp",
+  "/official/hero/7.webp",
+  "/official/hero/8.webp",
+  "/official/hero/9.webp"
+ ]
+}
