@@ -17,7 +17,7 @@ export default async function AboutPage() {
       <PageHero lang={lang} title={t.about.title} homeLabel={t.common.home} />
       <Section narrow>
         <h2 className="mb-4 border-l-4 border-gold pl-3 text-2xl font-bold text-brand">{t.about.history}</h2>
-                <div lang={lang} className="space-y-5 text-justify leading-loose text-neutral-800">
+                <div lang={lang} className="space-y-5 text-left sm:text-justify leading-loose text-neutral-800">
           {about.history.map((p, i) => <p key={i}>{tx(p, lang)}</p>)}
         </div>
         <Link href={`/${lang}/chairmans-message`} className="mt-8 inline-block rounded-md bg-brand px-5 py-3 font-semibold text-gold transition hover:bg-[#1d1d1d] hover:text-gold">

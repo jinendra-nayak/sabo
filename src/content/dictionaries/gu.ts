@@ -39,8 +39,6 @@ export const gu: Dictionary = {
     notFoundTitle: "પાનું મળ્યું નથી",
     notFoundText: "તમે શોધી રહ્યા છો તે પાનું અસ્તિત્વમાં નથી.",
     backHome: "હોમ પર પાછા જાઓ",
-    englishOnly: "બેંક દ્વારા આ પાનું અંગ્રેજીમાં પ્રકાશિત કરવામાં આવ્યું છે.",
-    gujaratiOnly: "બેંક દ્વારા આ પાનું ગુજરાતીમાં પ્રકાશિત કરવામાં આવ્યું છે.",
   },
   search: {
     placeholder: "પાનાં, ફોર્મ, શાખા શોધો…",
@@ -92,7 +90,6 @@ export const gu: Dictionary = {
     },
     since: "સ્થાપના",
     quick: "ઝડપી લિંક્સ",
-    aboutNote: "",
     mobileSub: "મોબાઇલ એપ",
     mobileTitleA: "સાબરકાંઠા જિલ્લા મધ્યસ્થ સહકારી બેંક",
     mobileTitleB: "મોબાઇલ એપ",

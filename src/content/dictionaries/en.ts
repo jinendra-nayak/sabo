@@ -38,8 +38,6 @@ export const en = {
     notFoundTitle: "Page not found",
     notFoundText: "The page you are looking for does not exist.",
     backHome: "Back to Home",
-    englishOnly: "This page is published by the Bank in English.",
-    gujaratiOnly: "This page is published by the Bank in Gujarati.",
   },
   search: {
     placeholder: "Search pages, forms, branches…",
@@ -91,7 +89,6 @@ export const en = {
     },
     since: "Est.",
     quick: "Quick links",
-    aboutNote: "",
     mobileSub: "Mobile APP",
     mobileTitleA: "The Sabarkantha District Central Co-Op Bank Ltd",
     mobileTitleB: "Mobile APP",

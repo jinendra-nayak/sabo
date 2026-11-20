@@ -1,9 +1,7 @@
-/** Instant placeholder while a page's `params` / content resolve (keyed per child route). */
+/**
+ * Instant placeholder while a page's content resolves. It is a full-screen-tall, non-animated block so the
+ * footer stays below the fold and nothing jumps (or pulses) when the real page streams in.
+ */
 export default function Loading() {
-  return (
-    <div aria-busy className="mx-auto max-w-7xl animate-pulse space-y-4 px-4 py-16">
-      <div className="h-10 w-1/3 rounded bg-neutral-200" />
-      <div className="h-64 rounded-xl bg-neutral-100" />
-    </div>
-  );
+  return <div aria-busy className="min-h-[100svh]" />;
 }

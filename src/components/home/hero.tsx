@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useState } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/content/dictionaries/en";
 import { site } from "@/lib/content";
@@ -20,8 +20,8 @@ function Shapes() {
       <svg className="animate-spin-slow absolute -right-24 top-1/2 size-[520px] -translate-y-1/2 text-[#1a3222] lg:right-[6%]" viewBox="0 0 100 100" fill="none">
         <circle cx="50" cy="50" r="40" stroke="currentColor" strokeWidth="9" strokeDasharray="1.2 0" />
       </svg>
-      <svg className="animate-twinkle absolute left-[46%] top-[8%] size-9 text-white/25" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6z" /></svg>
-      <svg className="animate-twinkle absolute bottom-[12%] left-[38%] size-6 text-white/25 [animation-delay:1.2s]" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6z" /></svg>
+      <svg className="absolute left-[46%] top-[8%] size-9 text-white/20" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6z" /></svg>
+      <svg className="absolute bottom-[12%] left-[38%] size-6 text-white/20" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 2.9 6.9 7.1.6-5.4 4.7 1.7 7.3L12 17.8 5.7 21.5l1.7-7.3L2 9.5l7.1-.6z" /></svg>
       <span className="animate-float absolute bottom-[14%] left-[34%] size-12 rounded-full border-[7px] border-white/10" />
     </div>
   );
@@ -67,18 +67,30 @@ function RatesArt() {
   );
 }
 
+/** How long each slide stays: the first (Education Loan) slide 4 s, the others 2 s. */
+const DURATIONS = [4000, 2000, 2000, 2000];
+
 export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [inView, setInView] = useState(true);
+  const [cycle, setCycle] = useState(0); // bumps every time the hero is left, so the first slide restarts with its full 4 s
+  const root = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
   const n = order.length;
   const go = useCallback((d: number) => setI((v) => (v + d + n) % n), [n]);
 
+  // Always (re)start on the first slide: when the hero scrolls out of view it resets, and autoplay only runs while it is visible.
   useEffect(() => {
-    if (paused || reduced) return;
-    const id = setInterval(() => go(1), 7000);
-    return () => clearInterval(id);
-  }, [paused, reduced, go]);
+    const el = root.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => {
+      setInView(e.isIntersecting);
+      if (!e.isIntersecting) { setI(0); setCycle((c) => c + 1); }
+    }, { threshold: 0.15 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const key = order[i];
   const s = t.home.hero[key];
@@ -94,6 +106,7 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
 
   return (
     <section
+      ref={root}
       aria-roledescription="carousel"
       aria-label="Highlights"
       className="mt-3 sm:mt-4"
@@ -130,15 +143,34 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
         <button type="button" onClick={() => go(1)} aria-label={t.home.next} className="absolute right-3 top-1/2 z-10 hidden lg:block -translate-y-1/2 rounded-full border border-white/25 bg-black/30 p-2.5 text-white transition hover:bg-[#1d1d1d] hover:text-gold">
           <ChevronRight className="size-5" />
         </button>
-        <div className="absolute inset-x-0 bottom-4 flex justify-center">
-          <div className="flex items-center gap-2 rounded-full bg-black/35 px-3 py-1.5">
-            {order.map((k, idx) => (
-              <button key={k} type="button" aria-label={`${t.home.slide} ${idx + 1}`} aria-current={idx === i} onClick={() => setI(idx)} className={`h-2 rounded-full transition-all ${idx === i ? "w-7 bg-gold" : "w-2 bg-white/60 hover:bg-white"}`} />
-            ))}
-            <button type="button" onClick={() => setPaused((p) => !p)} aria-label={paused ? "Play" : "Pause"} className="ml-1 text-white">
-              {paused ? <Play className="size-3.5" /> : <Pause className="size-3.5" />}
-            </button>
+        {/* Pagination: segmented progress only (autoplay still pauses on hover / focus) */}
+        <div className="absolute inset-x-0 bottom-4 z-10 flex items-center justify-center px-4 sm:bottom-6">
+          <div className="flex items-center gap-1.5 sm:gap-2" role="tablist" aria-label={t.home.slide}>
+            {order.map((k, idx) => {
+              const active = idx === i;
+              return (
+                <button
+                  key={k}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  aria-label={`${t.home.slide} ${idx + 1}`}
+                  onClick={() => setI(idx)}
+                  className={`group/seg grid h-7 place-items-center transition-[width] duration-500 ease-out ${active ? "w-12 sm:w-16" : "w-6 sm:w-8"}`}
+                >
+                  <span className="relative block h-[3px] w-full overflow-hidden rounded-full bg-white/25 transition-colors duration-300 group-hover/seg:bg-white/45">
+                    <span
+                      key={active ? `a${i}-${cycle}` : `s${idx}`}
+                      className={`absolute inset-0 origin-left rounded-full ${active ? "hero-seg bg-gold" : idx < i ? "bg-white/70" : "scale-x-0"}`}
+                      style={active && !reduced ? { animationDuration: `${DURATIONS[i]}ms`, animationPlayState: paused || !inView ? "paused" : "running" } : undefined}
+                      onAnimationEnd={active ? () => go(1) : undefined}
+                    />
+                  </span>
+                </button>
+              );
+            })}
           </div>
+
         </div>
       </div>
     </section>

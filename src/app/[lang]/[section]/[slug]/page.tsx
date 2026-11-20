@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/[section]/
 export default function CmsPage({ params }: PageProps<"/[lang]/[section]/[slug]">) {
   // `section` / `slug` are read inside <Suspense> so navigations show the shell instantly.
   return (
-    <Suspense fallback={<div aria-busy className="mx-auto h-96 max-w-4xl animate-pulse px-4 py-12" />}>
+    <Suspense fallback={<div aria-busy className="min-h-[100svh]" />}>
       <CmsContent params={params} />
     </Suspense>
   );
@@ -46,9 +46,6 @@ async function CmsContent({ params }: { params: PageProps<"/[lang]/[section]/[sl
   // Net-banking form page: add the login shortcut the bank shows in its top bar.
   const isNet = route.pageId === 113;
 
-  // The bank writes some pages in English only, others in Gujarati only.
-  const hasGu = /[઀-૿]/.test(JSON.stringify(page.blocks));
-  const note = lang === "en" && hasGu ? t.common.gujaratiOnly : lang === "gu" && !hasGu && !isMobile ? t.common.englishOnly : "";
 
   return (
     <>
@@ -57,7 +54,6 @@ async function CmsContent({ params }: { params: PageProps<"/[lang]/[section]/[sl
         <AppShowcase sub={t.home.mobileSub} titleA={t.home.mobileTitleA} titleB={t.home.mobileTitleB} text={t.home.mobileText} features={t.home.appFeatures} />
       ) : (
         <Section narrow>
-          {note && <p className="mb-6 rounded-md bg-gold-soft px-3 py-2 text-sm">{note}</p>}
           <div lang={lang}>
             <CmsBlocks blocks={page.blocks} downloadLabel={t.common.download} lang={lang} />
           </div>

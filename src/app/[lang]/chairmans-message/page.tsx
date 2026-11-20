@@ -27,7 +27,7 @@ export default async function ChairmanPage() {
             </figcaption>
           </figure>
           <div lang={lang} className="leading-loose text-neutral-800">
-            <p className="text-justify">{tx(chairman.message, lang)}</p>
+            <p className="text-left sm:text-justify">{tx(chairman.message, lang)}</p>
             <ul className="mt-5 space-y-2">
               {chairman.points.map((p, i) => (
                 <li key={i} className="flex gap-3">

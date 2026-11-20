@@ -105,7 +105,7 @@ export function NoticeBoard({ items, labels }: { items: Notice[]; labels: Labels
         <div className="relative flex items-center justify-center p-6 text-center sm:p-8 lg:min-h-full">
           <div className="flex flex-col items-center gap-3">
             <span className="relative grid size-14 place-items-center rounded-2xl bg-brand-dark text-gold ring-1 ring-gold/50">
-              <span aria-hidden className="absolute inset-0 animate-ping rounded-2xl bg-gold/20" />
+              <span aria-hidden className="absolute -inset-1.5 rounded-3xl bg-gold/15" />
               <Bell className="relative size-7" aria-hidden />
             </span>
             <h2 className="text-2xl font-bold text-gold sm:text-3xl">{labels.title}</h2>

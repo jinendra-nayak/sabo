@@ -61,15 +61,12 @@ export default async function HomePage() {
         <Reveal delay={150} className="surface rounded-[2rem] p-6 sm:p-9">
           <p className="eyebrow">{t.home.aboutSub}</p>
           <h2 className="mt-4 text-2xl font-bold leading-tight text-brand sm:text-3xl lg:text-4xl">{t.meta.siteName}</h2>
-          <p lang={lang} className="mt-4 text-justify leading-loose text-neutral-700">{tx(about.history[0], lang)}</p>
-          {t.home.aboutNote && <p className="mt-2 text-xs text-muted-foreground">{t.home.aboutNote}</p>}
+          <p lang={lang} className="mt-4 text-left sm:text-justify leading-loose text-neutral-700">{tx(about.history[0], lang)}</p>
           <Link href={`/${lang}/about`} className="mt-6 inline-flex items-center gap-2 rounded-md bg-brand px-6 py-3 font-semibold text-gold transition hover:bg-[#1d1d1d] hover:text-gold">
             {t.common.learnMore} <ArrowRight className="size-4" aria-hidden />
           </Link>
         </Reveal>
       </section>
-
-      <NewsTicker lang={lang} t={t} />
 
       <AppShowcase
         sub={t.home.mobileSub}
@@ -90,6 +87,8 @@ export default async function HomePage() {
           icon: c.icon,
         }))}
       />
+
+      <NewsTicker lang={lang} t={t} />
 
       <ServiceCards lang={lang} t={t} />
     </>
