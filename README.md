@@ -1,6 +1,6 @@
 # SKDCCB website (frontend)
 
-Public informational website for The Sabarkantha District Central Co-Op Bank Ltd, built from the
+Public informational website for The Sabarkantha District Central Cooperative Bank Ltd., built from the
 bank's current site (https://skdccb.bank.in/). Next.js (App Router, Cache Components) · TypeScript ·
 Tailwind · shadcn/ui (Base UI) · Lucide · DM Sans + Noto Sans Gujarati. Gujarati (`/gu`, default) and English (`/en`).
 

@@ -1,10 +1,10 @@
 export const en = {
   meta: {
-    siteName: "The Sabarkantha District Central Co-Op Bank Ltd",
+    siteName: "The Sabarkantha District Central Cooperative Bank Ltd.",
     shortName: "SK Bank",
     tagline: "From Your Hometown To The World",
     description:
-      "Official website of The Sabarkantha District Central Co-Op Bank Ltd, Himatnagar, Gujarat.",
+      "Official website of The Sabarkantha District Central Cooperative Bank Ltd., Himatnagar, Gujarat.",
   },
   top: {
     nivaran: "NIVARAN Customer Grievance Redressal",
@@ -59,12 +59,12 @@ export const en = {
       app: { tag: "Mobile App", title: "SK Bank mobile banking app", note: "Bank anytime on Android & iOS" },
       lakshmi: { tag: "Scheme", title: "Sabar Lakshmi Recurring Deposit", note: "Save a little every month" },
     },
-    welcome: "Welcome to The Sabarkantha District Central Co-Op Bank Ltd",
+    welcome: "Welcome to The Sabarkantha District Central Cooperative Bank Ltd.",
     aboutSub: "About Bank",
     announcements: "Announcements",
     hero: {
       education: {
-        eyebrow: "The Sabarkantha District Central Co-Op Bank Ltd",
+        eyebrow: "The Sabarkantha District Central Cooperative Bank Ltd.",
         title: "“From your hometown to the world — SK Bank Education Loan makes it possible.”",
         cta: "Contact",
       },
@@ -90,10 +90,10 @@ export const en = {
     since: "Est.",
     quick: "Quick links",
     mobileSub: "Mobile APP",
-    mobileTitleA: "The Sabarkantha District Central Co-Op Bank Ltd",
+    mobileTitleA: "The Sabarkantha District Central Cooperative Bank Ltd.",
     mobileTitleB: "Mobile APP",
     mobileText:
-      "The Sabarkantha District Central Co-op Bank Ltd offers a mobile banking app that allows customers to perform various banking activities such as instant fund transfers, account statement downloads, and account blocking. The app is available for download on platforms like Google Play, providing 24/7 access to banking services.",
+      "The Sabarkantha District Central Cooperative Bank Ltd. offers a mobile banking app that allows customers to perform various banking activities such as instant fund transfers, account statement downloads, and account blocking. The app is available for download on platforms like Google Play, providing 24/7 access to banking services.",
     appFeatures: ["Instant fund transfer", "Account statement", "Account blocking", "24/7 access"],
     strength: "Financial Strength",
     counters: {
@@ -108,7 +108,7 @@ export const en = {
     serviceCards: {
       locker: {
         title: "Safe Deposit Lockers",
-        text: "The Sabarkantha District Central Cooperative Bank Ltd offer safe deposit lockers for safely of your valuables. We offer safe deposit vault or locker with rent depending upon the size of locker.",
+        text: "The Sabarkantha District Central Cooperative Bank Ltd. offers safe deposit lockers to keep your valuables safe. We offer safe deposit vault or locker with rent depending upon the size of locker.",
       },
       draft: {
         title: "Demand Draft & Pay Order",
@@ -116,11 +116,11 @@ export const en = {
       },
       loan: {
         title: "Loans",
-        text: "The Sabarkantha District Central Cooperative Bank Ltd, provides different types of following loan facilities to various categories of borrowers under various loaning scheme.",
+        text: "The Sabarkantha District Central Cooperative Bank Ltd. provides various loan facilities to different categories of borrowers under its loan schemes.",
       },
       neft: {
         title: "RTGS and NEFT Facility",
-        text: "Real Time Gross Settlement/National Electronic Fund Transfer Facility available to the customer of the bank. By this facility customer can transfer his/her balance throughout India of any Banks, which is member of RTGS/NEFT.",
+        text: "Real Time Gross Settlement (RTGS) and National Electronic Funds Transfer (NEFT) facilities are available to the bank's customers. By this facility customer can transfer his/her balance throughout India of any Banks, which is member of RTGS/NEFT.",
       },
     },
     awarenessTitle: "Beware of unknown links",
@@ -192,7 +192,7 @@ export const en = {
   contact: {
     title: "Contact Us",
     haveQuestions: "Have Any Questions?",
-    intro: "Have a inquiry or some feedback for us?",
+    intro: "Have an inquiry or feedback for us?",
     address: "Our Address",
     number: "Contact Number",
     email: "Email",
@@ -221,7 +221,7 @@ export const en = {
     pan: "PAN No.",
     gst: "GST No.",
     dicgc: "DICGC Assurance",
-    dicgcText: "The Sabarkantha District Central Co-op Bank Ltd is Registered With DICGC.",
+    dicgcText: "The Sabarkantha District Central Cooperative Bank Ltd. is Registered With DICGC.",
     rights: "All rights reserved.",
   },
   group: {

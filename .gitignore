@@ -57,6 +57,7 @@ next-env.d.ts
 /playwright-report/
 /screenshots/
 /scratch/
+.playwright-mcp/
 
 # python (build scripts)
 __pycache__/

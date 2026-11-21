@@ -63,12 +63,12 @@
    "group": "forms"
   },
   {
-   "title": "Apy",
+   "title": "Atal Pension Yojana (APY)",
    "url": "https://skdccb.bank.in/resources/assets/upload/bank_document/77_20251008132730.pdf",
    "group": "forms"
   },
   {
-   "title": "PMSBY",
+   "title": "Pradhan Mantri Suraksha Bima Yojana (PMSBY)",
    "url": "https://skdccb.bank.in/resources/assets/upload/bank_document/630_20251008132757.pdf",
    "group": "forms"
   },
@@ -88,7 +88,7 @@
    "group": "forms"
   },
   {
-   "title": "CONSENT FORM FOR AADHAAR SEEDING AND AUTHENTICATION",
+   "title": "Consent Form for Aadhaar Seeding and Authentication",
    "url": "https://skdccb.bank.in/resources/assets/upload/bank_document/216_20251008141027.pdf",
    "group": "forms"
   },
@@ -103,12 +103,12 @@
    "group": "forms"
   },
   {
-   "title": "PMJJBY",
+   "title": "Pradhan Mantri Jeevan Jyoti Bima Yojana (PMJJBY)",
    "url": "https://skdccb.bank.in/resources/assets/upload/bank_document/498_20251008141255.pdf",
    "group": "forms"
   },
   {
-   "title": "Download RTGS",
+   "title": "RTGS Form",
    "url": "https://skdccb.bank.in/resources/assets/upload/bank_document/457_20251008141320.pdf",
    "group": "forms"
   },
@@ -128,7 +128,7 @@
    "group": "forms"
   },
   {
-   "title": "POSITIVE PAY CONFIRMATION",
+   "title": "Positive Pay Confirmation",
    "url": "https://skdccb.bank.in/resources/assets/upload/bank_document/285_20260724171637.pdf",
    "group": "forms"
   },
@@ -143,7 +143,7 @@
    "group": "forms"
   },
   {
-   "title": "QR CODE DOCUMENT",
+   "title": "QR Code Document",
    "url": "https://skdccb.bank.in/resources/assets/upload/bank_document/447_20260724172800.pdf",
    "group": "forms"
   },
@@ -153,7 +153,7 @@
    "group": "forms"
   },
   {
-   "title": "unclaim form",
+   "title": "Unclaimed Account Form",
    "url": "https://skdccb.bank.in/resources/assets/upload/bank_document/871_20260727142147.pdf",
    "group": "forms"
   },
@@ -163,19 +163,19 @@
    "group": "forms"
   },
   {
-   "title": "Form 121 (Early known as 15G/H)",
+   "title": "Form 121 (Formerly 15G/H)",
    "url": "https://skdccb.bank.in/resources/assets/upload/bank_document/712_20261023122150.pdf",
    "group": "forms"
   },
   {
-   "title": "Form 97 (Early Known as 60/61)",
+   "title": "Form 97 (Formerly 60/61)",
    "url": "https://skdccb.bank.in/resources/assets/upload/bank_document/433_20261023122248.pdf",
    "group": "forms"
   }
  ],
  "lockerForms": [
   {
-   "title": "Increase the rate of locker's rent with with effect from 01/05/2023",
+   "title": "Increase in locker rent with effect from 01/05/2023",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/153_20251008162942.pdf"
   },
   {
@@ -183,35 +183,35 @@
    "url": "https://skdccb.bank.in/resources/assets/upload/file/629_20251008163147.pdf"
   },
   {
-   "title": "Locker Application form",
+   "title": "Locker Application Form",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/624_20251008163258.pdf"
   },
   {
-   "title": "Locker Rent Agreement form",
+   "title": "Locker Rent Agreement Form",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/906_20251008163335.pdf"
   },
   {
-   "title": "Nominal Member Application form",
+   "title": "Nominal Member Application Form",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/525_20251008163512.pdf"
   },
   {
-   "title": "FORM SL 1",
+   "title": "Form SL 1",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/12_20251008163554.pdf"
   },
   {
-   "title": "FORM SL 1A",
+   "title": "Form SL 1A",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/901_20251008163617.pdf"
   },
   {
-   "title": "FORM SL 2",
+   "title": "Form SL 2",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/345_20251008163642.pdf"
   },
   {
-   "title": "FORM SL 3",
+   "title": "Form SL 3",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/60_20251008163724.pdf"
   },
   {
-   "title": "FORM SL 3A",
+   "title": "Form SL 3A",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/290_20251008163754.pdf"
   },
   {
@@ -219,7 +219,7 @@
    "url": "https://skdccb.bank.in/resources/assets/upload/file/219_20251008163820.pdf"
   },
   {
-   "title": "Affidate Application Form",
+   "title": "Affidavit Application Form",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/220_20251008163849.pdf"
   },
   {
@@ -231,11 +231,11 @@
    "url": "https://skdccb.bank.in/resources/assets/upload/file/310_20251008163950.pdf"
   },
   {
-   "title": "Return Locker Inventary with Nominee",
+   "title": "Return Locker Inventory with Nominee",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/251_20251008164019.pdf"
   },
   {
-   "title": "Return Locker Inventary without Nominee",
+   "title": "Return Locker Inventory without Nominee",
    "url": "https://skdccb.bank.in/resources/assets/upload/file/798_20251008164043.pdf"
   }
  ],

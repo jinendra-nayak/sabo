@@ -74,11 +74,10 @@ export function NoticeBoard({ items, labels }: { items: Notice[]; labels: Labels
         onClick={(e) => { if (s.current.moved > 6) e.preventDefault(); }}
         className="group/n flex flex-col items-start gap-2 rounded-xl px-3 py-3.5 transition duration-300 hover:bg-white/[0.08] focus-visible:bg-white/[0.08] sm:flex-row sm:gap-4 sm:hover:pl-4"
       >
-        {idx < 3 ? (
-          <span className="mt-0.5 w-fit min-w-[5.75rem] sm:w-[6.75rem] shrink-0 rounded-full border border-gold/70 bg-brand-dark px-2.5 py-0.5 text-center text-[10px] font-black uppercase tracking-widest text-gold">{labels.isNew}</span>
-        ) : (
-          <span className="mt-0.5 w-fit min-w-[5.75rem] sm:w-[6.75rem] shrink-0 rounded-full border border-white/25 px-2.5 py-0.5 text-center text-[10px] font-bold uppercase tracking-widest text-white/70">{it.tag}</span>
-        )}
+        <span className="flex w-fit shrink-0 flex-wrap items-center gap-1.5 sm:w-[6.75rem] sm:flex-col sm:items-start">
+          <span className="mt-0.5 w-fit rounded-full border border-white/25 px-2.5 py-0.5 text-center text-[10px] font-bold uppercase tracking-widest text-white/70">{it.tag}</span>
+          {idx < 3 && <span className="mt-0.5 w-fit rounded-full border border-gold/70 bg-brand-dark px-2.5 py-0.5 text-center text-[10px] font-black uppercase tracking-widest text-gold">{labels.isNew}</span>}
+        </span>
         <span className="min-w-0 flex-1">
           <span className="block font-semibold leading-snug text-white transition group-hover/n:text-gold sm:text-[17px]">{it.title}</span>
           <span className="mt-0.5 block text-sm text-white/65">{it.note}</span>

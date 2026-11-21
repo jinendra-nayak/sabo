@@ -66,29 +66,52 @@ function TableBlock({ rows: raw, lang }: { rows: string[][]; lang: Locale }) {
   const cols = Math.max(...rows.map((r) => r.length));
   const [head, ...body] = rows;
   const headIsHeader = head.length === cols && head.every(Boolean);
+  const bodyRows = headIsHeader ? body : rows;
   return (
-    <div className="surface my-6 overflow-x-auto rounded-2xl">
-      <table className="w-full min-w-[32rem] border-collapse text-sm">
-        {headIsHeader && (
-          <thead className="bg-brand text-left text-white">
-            <tr>{head.map((c, i) => <th key={i} scope="col" className="px-3 py-3 font-semibold">{c}</th>)}</tr>
-          </thead>
+    <>
+      {/* Phones: one card per row, so no column is ever pushed off-screen */}
+      <ul className="my-6 space-y-3 sm:hidden">
+        {bodyRows.map((r, ri) =>
+          r.length < cols && r.length === 1 ? (
+            <li key={ri} className="rounded-xl bg-gold-soft px-3 py-2 font-semibold">{r[0]}</li>
+          ) : (
+            <li key={ri} className="surface rounded-2xl p-3.5">
+              <p className="font-semibold text-brand">{r[0]}</p>
+              <dl className="mt-1.5 space-y-1 text-sm">
+                {r.slice(1).map((c, ci) => (
+                  <div key={ci} className="flex items-baseline justify-between gap-3">
+                    <dt className="text-neutral-600">{headIsHeader ? head[ci + 1] : ""}</dt>
+                    <dd className="whitespace-pre-line text-right font-medium">{c}</dd>
+                  </div>
+                ))}
+              </dl>
+            </li>
+          ),
         )}
-        <tbody>
-          {(headIsHeader ? body : rows).map((r, ri) => (
-            <tr key={ri} className="border-t border-white/60 odd:bg-white/50 even:bg-white/20 hover:bg-gold-soft/70">
-              {r.length < cols && r.length === 1 ? (
-                <th colSpan={cols} scope="colgroup" className="bg-gold-soft px-3 py-2 text-left font-semibold">{r[0]}</th>
-              ) : (
-                r.map((c, ci) => (
-                  <td key={ci} className={`whitespace-pre-line px-3 py-2.5 align-top ${ci === 0 && !headIsHeader ? "font-semibold" : ""}`}>{c}</td>
-                ))
-              )}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+      </ul>
+      <div className="surface my-6 hidden overflow-x-auto rounded-2xl sm:block">
+        <table className="w-full min-w-[32rem] border-collapse text-sm">
+          {headIsHeader && (
+            <thead className="bg-brand text-left text-white">
+              <tr>{head.map((c, i) => <th key={i} scope="col" className="px-3 py-3 font-semibold">{c}</th>)}</tr>
+            </thead>
+          )}
+          <tbody>
+            {bodyRows.map((r, ri) => (
+              <tr key={ri} className="border-t border-white/60 odd:bg-white/50 even:bg-white/20 hover:bg-gold-soft/70">
+                {r.length < cols && r.length === 1 ? (
+                  <th colSpan={cols} scope="colgroup" className="bg-gold-soft px-3 py-2 text-left font-semibold">{r[0]}</th>
+                ) : (
+                  r.map((c, ci) => (
+                    <td key={ci} className={`whitespace-pre-line px-3 py-2.5 align-top ${ci === 0 && !headIsHeader ? "font-semibold" : ""}`}>{c}</td>
+                  ))
+                )}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 

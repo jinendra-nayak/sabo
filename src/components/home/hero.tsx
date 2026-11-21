@@ -101,7 +101,7 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
     >
       <div className="relative overflow-hidden bg-[#223e2a] shadow-xl">
         {key === "security" ? <SecurityBackdrop key="sec-bg" /> : <Shapes stars={key === "education"} />}
-        <div key={key} role="group" aria-roledescription="slide" aria-label={`${i + 1} / ${n}`} className="relative mx-auto grid w-full max-w-7xl min-h-[560px] items-center gap-4 px-6 py-12 sm:px-12 lg:min-h-[480px] lg:grid-cols-[1.1fr_0.9fr] lg:px-20 max-sm:pr-16">
+        <div key={key} role="group" aria-roledescription="slide" aria-label={`${i + 1} / ${n}`} className="relative mx-auto grid w-full max-w-7xl min-h-[800px] items-center gap-4 px-6 py-12 sm:px-12 lg:min-h-[480px] lg:grid-cols-[1.1fr_0.9fr] lg:px-20">
           <div className="max-w-2xl">
             <p className="hero-in text-sm font-bold uppercase tracking-wide text-gold sm:text-base" style={{ animationDelay: "0.05s" }}>{s.eyebrow}</p>
             <h2 className="hero-in mt-3 text-3xl font-bold leading-[1.2] text-white sm:text-4xl lg:text-5xl" style={{ animationDelay: "0.2s" }}>{s.title}</h2>

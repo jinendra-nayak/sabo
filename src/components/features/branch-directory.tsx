@@ -21,8 +21,8 @@ export function BranchDirectory({ branches, t }: { branches: Branch[]; t: Dictio
 
   return (
     <div>
-      <div className="surface sticky top-20 z-20 flex flex-col gap-3 rounded-2xl p-3 sm:flex-row sm:items-center">
-        <label className="relative flex-1 sm:max-w-lg">
+      <div className="surface sticky top-28 z-20 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl p-3 lg:top-24">
+        <label className="relative min-w-full flex-1 sm:min-w-0 sm:max-w-lg">
           <span className="sr-only">{t.nav.search}</span>
           <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden />
           <input
@@ -37,7 +37,7 @@ export function BranchDirectory({ branches, t }: { branches: Branch[]; t: Dictio
           <input type="checkbox" checked={lockerOnly} onChange={(e) => setLockerOnly(e.target.checked)} className="size-4 accent-[#25452e]" />
           {t.branches.lockerOnly}
         </label>
-        <p className="text-sm font-medium text-brand sm:ml-auto" aria-live="polite">
+        <p className="ml-auto text-sm font-medium text-brand" aria-live="polite">
           {results.length} / {branches.length} {t.branches.count}
         </p>
       </div>

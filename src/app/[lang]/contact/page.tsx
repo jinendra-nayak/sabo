@@ -37,7 +37,6 @@ export default async function ContactPage() {
           <h3 className="font-semibold">{t.contact.nodal}</h3>
           <p className="mt-1">{tx(site.nodalOfficer.name, lang)}</p>
           <p className="text-sm">{t.contact.mobile}: <a className="hover:underline" href={`tel:${site.nodalOfficer.mobile}`}>{site.nodalOfficer.mobile}</a> · <a className="hover:underline" href={`mailto:${site.nodalOfficer.email}`}>{site.nodalOfficer.email}</a></p>
-          <p className="text-sm text-neutral-600">{tx(site.nodalOfficer.address, lang)}</p>
         </div>
         <div className="mt-8 surface overflow-hidden rounded-3xl p-2">
           <iframe
@@ -45,7 +44,7 @@ export default async function ContactPage() {
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             className="h-80 w-full"
-            src={`https://www.google.com/maps?q=${encodeURIComponent("The Sabarkantha District Central Co-Op Bank Ltd, Station Road, Himatnagar 383001")}&output=embed`}
+            src={`https://www.google.com/maps?q=${encodeURIComponent(`${t.meta.siteName}, ${site.address}`)}&output=embed`}
           />
         </div>
       </Section>
