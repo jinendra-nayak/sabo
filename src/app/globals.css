@@ -315,3 +315,12 @@ html { scrollbar-width: thin; scrollbar-color: #2f5a3a #e9ece9; }
 .hero-seg { animation: hero-seg 7s linear forwards; }
 @media (prefers-reduced-motion: reduce) { .hero-seg { animation: none; transform: scaleX(1); } }
 
+
+/* EMI calculator range slider: filled track (driven by --pct) + large, easy-to-grab thumb */
+.emi-range { -webkit-appearance: none; appearance: none; height: 8px; border-radius: 9999px; cursor: pointer; outline: none;
+  background: linear-gradient(to right, #25452e 0 var(--pct, 0%), #e3e8e4 var(--pct, 0%) 100%); }
+.emi-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 24px; height: 24px; border-radius: 50%;
+  background: #f7c600; border: 4px solid #25452e; box-shadow: 0 2px 8px rgba(23,44,29,.35); transition: transform .15s; }
+.emi-range::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #f7c600; border: 4px solid #25452e; box-shadow: 0 2px 8px rgba(23,44,29,.35); }
+.emi-range:active::-webkit-slider-thumb { transform: scale(1.15); }
+.emi-range:focus-visible { outline: 2px solid #f7c600; outline-offset: 4px; }

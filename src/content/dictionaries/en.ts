@@ -187,6 +187,12 @@ export const en = {
     breakup: "Break-up of Total Payment",
     principal: "Principal Loan Amount",
     interest: "Total Interest",
+    crore: "Crore",
+    reset: "Reset",
+    quick: "Quick pick",
+    needAmount: "Enter a loan amount greater than 0 to see the EMI.",
+    needTenure: "Enter a loan tenure (years and/or months) to see the EMI.",
+    limits: "Limits: amount up to ₹100 crore, rate up to 40%, tenure up to 40 years.",
     disclaimer: "Indicative calculation only. Actual EMI is subject to the Bank's terms.",
   },
   contact: {
