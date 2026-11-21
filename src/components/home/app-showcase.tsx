@@ -36,7 +36,7 @@ function StoreBadge({ href, label, caption, name, children }: { href: string; la
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="store-badge group/b relative flex h-[clamp(2.6rem,12vw,3.4rem)] min-w-0 flex-1 items-center gap-2 overflow-hidden rounded-full bg-[#0f2417] px-3 text-white max-[359px]:gap-1.5 max-[359px]:px-2.5 shadow-lg shadow-black/30 transition duration-300 hover:-translate-y-1 hover:bg-[#0b1b11] hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:max-w-[11.5rem] sm:gap-2.5 sm:px-4"
+      className="store-badge group/b relative flex h-[clamp(2.6rem,12vw,3.4rem)] w-full min-w-0 items-center gap-2 overflow-hidden rounded-full bg-[#0f2417] px-3 text-white max-[359px]:gap-1.5 max-[359px]:px-2.5 shadow-lg shadow-black/30 transition duration-300 hover:-translate-y-1 hover:bg-[#0b1b11] hover:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold sm:max-w-[11.5rem] sm:gap-2.5 sm:px-4"
     >
       <span className="grid size-[1.35rem] shrink-0 place-items-center max-[359px]:size-4 sm:size-7">{children}</span>
       <span className="min-w-0 leading-none">
@@ -102,8 +102,8 @@ export function AppShowcase({
               })}
             </ul>
 
-            {/* Store badges — always side by side, solid dark green pills (code-built, no image outlines) */}
-            <div className="mt-8 flex max-w-md flex-nowrap items-center gap-3 max-sm:pr-10 sm:gap-4">
+            {/* Store badges — in the same two columns as the feature cards, each centred under its column, solid dark green pills (code-built, no image outlines) */}
+            <div className="mt-8 grid max-w-xl grid-cols-2 justify-items-center gap-3">
               <StoreBadge href={site.external.playStore} label="Get it on Google Play" caption="Get it on" name="Google Play">
                 <PlayLogo className="size-full" />
               </StoreBadge>
