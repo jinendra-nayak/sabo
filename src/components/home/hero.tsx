@@ -31,13 +31,33 @@ function Shapes({ stars = false }: { stars?: boolean }) {
 function SecurityBackdrop() {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden bg-[#14291a]">
-      <div className="sec-zoom absolute inset-x-0 bottom-0 top-[42%] lg:inset-0">
+      <div className="sec-zoom absolute inset-0 max-lg:hidden">
         <Image src="/official/hero/security-bg-green.png" alt="" fill priority sizes="100vw" className="object-cover [object-position:64%_30%] lg:[object-position:72%_28%]" />
       </div>
-      <div className="sec-glow absolute right-[8%] bottom-[8%] size-72 lg:right-[16%] lg:top-[16%] lg:bottom-auto lg:size-[26rem] rounded-full bg-gold/15 blur-3xl" />
+      <div className="sec-glow absolute right-[16%] top-[16%] size-[26rem] rounded-full bg-gold/15 blur-3xl max-lg:hidden" />
       <div className="sec-scan absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-gold/10 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-b from-[#14291a] from-45% via-[#14291a]/60 to-transparent lg:bg-gradient-to-r lg:from-[#14291a] lg:from-0% lg:via-[#14291a]/60 lg:to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#14291a]/70 to-transparent" />
+    </div>
+  );
+}
+
+/* Phones: the shield as real artwork inside the same-size art box every other slide uses (soft-edged, no background gap). */
+function SecurityArt() {
+  // The shield sits at ~(1141, 326) of the 1742×980 artwork. Draw the image at 62% (shield ≈ 200px wide) and offset it so that
+  // point lands exactly in the middle of the 300px art box — then fade the edges so there is no visible image boundary.
+  return (
+    <div aria-hidden className="relative h-full w-full overflow-hidden lg:hidden [mask-image:radial-gradient(ellipse_52%_52%_at_center,#000_70%,transparent_100%)]">
+      <Image
+        src="/official/hero/security-bg-green.png"
+        alt=""
+        width={1080}
+        height={608}
+        priority
+        sizes="1080px"
+        className="absolute max-w-none"
+        style={{ left: "calc(50% - 707px)", top: "-52px" }}
+      />
     </div>
   );
 }
@@ -46,18 +66,18 @@ function SecurityBackdrop() {
 function EducationArt() {
   return (
     <div className="animate-float relative">
-      <Image src="/official/hero/edu-art.png" alt="" width={355} height={350} unoptimized priority className="h-auto w-[250px] sm:w-[300px] lg:w-[355px]" />
+      <Image src="/official/hero/edu-art.png" alt="" width={355} height={350} unoptimized priority className="h-auto w-[290px] sm:w-[300px] lg:w-[355px]" />
     </div>
   );
 }
 
 function RatesArt() {
   return (
-    <div className="relative grid size-64 place-items-center sm:size-72">
+    <div className="relative grid size-[18rem] place-items-center sm:size-72">
       <svg className="animate-spin-slow absolute size-full" viewBox="0 0 100 100" fill="none">
         <circle cx="50" cy="50" r="46" stroke="#f7c600" strokeWidth="1.2" strokeDasharray="3 5" />
       </svg>
-      <div className="animate-float surface-dark grid size-48 place-items-center rounded-full border-4 !border-gold text-center sm:size-56">
+      <div className="animate-float surface-dark grid size-[13.5rem] place-items-center rounded-full border-4 !border-gold text-center sm:size-56">
         <div>
           <p className="text-5xl font-extrabold leading-none text-gold sm:text-6xl">7.05<span className="text-3xl">%</span></p>
           <p className="mt-2 text-sm text-white/80">p.a.</p>
@@ -101,23 +121,26 @@ export function Hero({ lang, t }: { lang: Locale; t: Dictionary }) {
     >
       <div className="relative overflow-hidden bg-[#223e2a] shadow-xl">
         {key === "security" ? <SecurityBackdrop key="sec-bg" /> : <Shapes stars={key === "education"} />}
-        <div key={key} role="group" aria-roledescription="slide" aria-label={`${i + 1} / ${n}`} className="relative mx-auto grid w-full max-w-7xl min-h-[800px] items-center gap-4 px-6 py-12 sm:px-12 lg:min-h-[480px] lg:grid-cols-[1.1fr_0.9fr] lg:px-20">
-          <div className="max-w-2xl">
+        <div key={key} role="group" aria-roledescription="slide" aria-label={`${i + 1} / ${n}`} className="relative mx-auto grid w-full max-w-7xl min-h-[668px] max-[359px]:min-h-[692px] items-center gap-4 px-6 pb-16 pt-8 max-lg:content-start sm:px-12 lg:min-h-[500px] lg:grid-cols-[1.1fr_0.9fr] lg:content-center lg:gap-x-4 lg:gap-y-0 lg:px-20 lg:py-12">
+          {/* Phones: fixed-size text area → fixed-size art box → button directly under it, so every slide lines up identically.
+              Desktop: text and button stacked on the left, artwork on the right. */}
+          <div className="flex max-w-2xl flex-col justify-end min-h-[11.5rem] max-[359px]:min-h-[13.25rem] lg:block lg:min-h-0 lg:col-start-1 lg:row-start-1 lg:self-end">
             <p className="hero-in text-sm font-bold uppercase tracking-wide text-gold sm:text-base" style={{ animationDelay: "0.05s" }}>{s.eyebrow}</p>
-            <h2 className="hero-in mt-3 text-3xl font-bold leading-[1.2] text-white sm:text-4xl lg:text-5xl" style={{ animationDelay: "0.2s" }}>{s.title}</h2>
+            <h2 className="hero-in mt-3 text-[1.65rem] font-bold leading-[1.2] text-white sm:text-4xl lg:text-5xl" style={{ animationDelay: "0.2s" }}>{s.title}</h2>
             {text && <p className="hero-in mt-4 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg" style={{ animationDelay: "0.35s" }}>{text}</p>}
-            <div className="hero-in mt-8" style={{ animationDelay: "0.5s" }}>
-              {c.external ? (
-                <a href={c.href} target="_blank" rel="noopener noreferrer" className={btn}>{s.cta} <ArrowRight className="size-5" aria-hidden /></a>
-              ) : (
-                <Link href={c.href} className={btn}>{s.cta} <ArrowRight className="size-5" aria-hidden /></Link>
-              )}
-            </div>
           </div>
-          <div className="hero-art-in flex justify-center lg:justify-end">
+          <div className="hero-art-in flex items-center justify-center max-lg:h-[300px] lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:justify-end">
             {key === "education" && <EducationArt />}
-            {key === "app" && <div className="animate-float"><PhoneMock showDots={false} paused={paused} /></div>}
+            {key === "app" && <div className="max-lg:scale-[0.76]"><div className="animate-float"><PhoneMock showDots={false} paused={paused} /></div></div>}
+            {key === "security" && <SecurityArt />}
             {key === "rates" && <RatesArt />}
+          </div>
+          <div className="hero-in flex justify-center lg:col-start-1 lg:row-start-2 lg:mt-8 lg:justify-start lg:self-start" style={{ animationDelay: "0.5s" }}>
+            {c.external ? (
+              <a href={c.href} target="_blank" rel="noopener noreferrer" className={btn}>{s.cta} <ArrowRight className="size-5" aria-hidden /></a>
+            ) : (
+              <Link href={c.href} className={btn}>{s.cta} <ArrowRight className="size-5" aria-hidden /></Link>
+            )}
           </div>
         </div>
 
